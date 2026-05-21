@@ -20,5 +20,8 @@
       <slot />
     </main>
     <Footer />
+    <ClientOnly>
+      <PredAccessibilityTools />
+    </ClientOnly>
   </v-app>
 </template>

@@ -5,5 +5,8 @@
       <slot />
     </main>
     <PredTheFooter />
+    <ClientOnly>
+      <PredAccessibilityTools />
+    </ClientOnly>
   </v-app>
 </template>
