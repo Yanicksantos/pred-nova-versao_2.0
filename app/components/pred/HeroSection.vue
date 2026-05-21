@@ -13,12 +13,22 @@
           <h1 class="h-display hero-headline" v-html="headlineHtml"></h1>
           <p class="hero-sub">{{ sub }}</p>
           <div class="hero-ctas">
-            <button class="btn btn-primary btn-lg">
+            <component
+              :is="primaryHref ? 'a' : 'button'"
+              :href="primaryHref || undefined"
+              :type="primaryHref ? undefined : 'button'"
+              class="btn btn-primary btn-lg"
+            >
               {{ primaryCta }} <span class="arrow">→</span>
-            </button>
-            <button class="btn btn-outline btn-lg">
+            </component>
+            <component
+              :is="secondaryHref ? 'a' : 'button'"
+              :href="secondaryHref || undefined"
+              :type="secondaryHref ? undefined : 'button'"
+              class="btn btn-outline btn-lg"
+            >
               {{ secondaryCta }}
-            </button>
+            </component>
           </div>
           <div class="btn-microcopy">SEM COMPROMISSO · RESPOSTA EM ATÉ 24H</div>
 
@@ -62,6 +72,8 @@ withDefaults(defineProps<{
   sub: string
   primaryCta?: string
   secondaryCta?: string
+  primaryHref?: string
+  secondaryHref?: string
   stats?: Array<{ value: number; prefix?: string; suffix?: string; unit?: string; label: string; decimals?: number }>
   imageUrl: string
   imageAlt?: string

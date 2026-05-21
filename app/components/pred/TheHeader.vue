@@ -1,7 +1,7 @@
 <template>
   <header class="site-header">
     <div class="wrap">
-      <NuxtLink to="/servicos/engenharia-manutencao-e-confiabilidade" class="site-logo">
+      <NuxtLink to="/" class="site-logo">
         <span class="site-logo-mark">P</span>
         <span>PRED <span :style="{ color: 'var(--cyan)' }">·</span> ENGENHARIA</span>
       </NuxtLink>
