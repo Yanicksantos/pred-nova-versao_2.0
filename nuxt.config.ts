@@ -2,9 +2,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
+  css: ['~/assets/css/pred-design.css'],
   modules: [
     '@nuxt/a11y',
-    '@nuxt/fonts',
     '@nuxt/hints',
     'vuetify-nuxt-module',
     '@nuxt/image',
@@ -22,8 +22,7 @@ export default defineNuxtConfig({
       display: 'swap'
     },
   }], 
-  '@nuxtjs/i18n', 
-  '@nuxt/image'
+  '@nuxtjs/i18n'
   ],
     
 

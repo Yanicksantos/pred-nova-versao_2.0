@@ -48,6 +48,11 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+.pred-app.v-application {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink-800);
+}
 img { max-width: 100%; display: block; }
 button { font-family: inherit; }
 a { color: inherit; }

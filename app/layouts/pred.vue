@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <v-app class="pred-app">
     <PredTheHeader />
     <main>
       <slot />
     </main>
     <PredTheFooter />
-  </div>
+  </v-app>
 </template>
