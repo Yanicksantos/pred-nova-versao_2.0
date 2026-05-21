@@ -33,7 +33,7 @@
         <div class="footer-col">
           <h4>Empresa</h4>
           <a>Sobre Nós</a>
-          <a>Carreiras</a>
+          <NuxtLink to="/trabalhe-conosco">Carreiras</NuxtLink>
           <a>Contato</a>
           <NuxtLink to="/blog">Blog</NuxtLink>
         </div>

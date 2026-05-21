@@ -68,6 +68,7 @@ const NAV = [
   { label: 'Apps', to: '/servicos/s3i' },
   { label: 'Metodologia MCI®', to: '/mci' },
   { label: 'Blog', to: '/blog' },
+  { label: 'Carreiras', to: '/trabalhe-conosco' },
 ]
 
 function isActive(to: string) {
