@@ -1,5 +1,5 @@
 <template>
-  <v-app class="pred-app">
+  <div>
     <PredTheHeader />
     <main>
       <slot />
@@ -8,5 +8,5 @@
     <ClientOnly>
       <PredAccessibilityTools />
     </ClientOnly>
-  </v-app>
+  </div>
 </template>
