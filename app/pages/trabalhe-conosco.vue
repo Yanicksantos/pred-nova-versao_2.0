@@ -344,8 +344,8 @@ function setFile(file?: File | null) {
 }
 
 function onFileChange(event: Event) {
-  const input = event.target as HTMLInputElement
-  setFile(input.files?.[0])
+  /*const input = event.target as HTMLInputElement
+  setFile(input.files?.[0])*/
 }
 
 function onDrop(event: DragEvent) {
@@ -353,7 +353,7 @@ function onDrop(event: DragEvent) {
 }
 
 async function submitApplication() {
-  if (!selectedFile.value) {
+  /*if (!selectedFile.value) {
     status.value = 'error'
     feedback.value = ''
     fileError.value = 'Anexe seu currículo para enviar a candidatura.'
@@ -384,7 +384,7 @@ async function submitApplication() {
     feedback.value = error instanceof Error ? error.message : 'Não foi possível enviar agora. Tente novamente em alguns instantes.'
   } finally {
     isSubmitting.value = false
-  }
+  }*/
 }
 </script>
 
