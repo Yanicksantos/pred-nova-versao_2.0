@@ -16,7 +16,7 @@
               INSIGHTS TÉCNICOS · PUBLICAÇÕES ESTRATÉGICAS
             </div>
             <h1 class="h-display hero-headline" :style="{ fontSize: 'clamp(36px, 4.4vw, 64px)' }">
-              Inteligência aplicada à<br/>
+              Inteligência <br/>aplicada à
               <span class="underline">manutenção industrial</span>
             </h1>
             <p class="hero-sub" :style="{ marginTop: '24px' }">

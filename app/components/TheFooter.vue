@@ -4,8 +4,7 @@
       <div class="footer-grid">
         <div class="footer-col">
           <NuxtLink to="/" class="site-logo">
-            <span class="site-logo-mark">P</span>
-            <span>PRED · ENGENHARIA</span>
+            <img class="site-logo-img" src="/logop.png" alt="Pred Engenharia" />
           </NuxtLink>
           <p class="footer-tag">
             Engenharia industrial com método MCI® próprio, serviços técnicos, tecnologia e automação para gestão de ativos desde 1993.
