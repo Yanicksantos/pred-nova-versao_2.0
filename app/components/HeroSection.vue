@@ -2,7 +2,6 @@
   <section class="hero">
     <div class="hero-grid-bg" />
     <div class="hero-corner left mono">PRED · {{ code }}</div>
-    <div class="hero-corner right mono">{{ rev }}</div>
     <div class="wrap">
       <div class="hero-inner">
         <div class="reveal in">
@@ -11,7 +10,9 @@
             {{ eyebrow }}
           </div>
           <h1 class="h-display hero-headline" v-html="headlineHtml"></h1>
+          
           <p class="hero-sub">{{ sub }}</p>
+          
           <div class="hero-ctas">
             <component
               :is="primaryHref ? 'a' : 'button'"
@@ -30,7 +31,8 @@
               {{ secondaryCta }}
             </component>
           </div>
-          <div class="btn-microcopy">SEM COMPROMISSO · RESPOSTA EM ATÉ 24H</div>
+
+          <!--<div class="btn-microcopy">SEM COMPROMISSO · RESPOSTA EM ATÉ 24H</div>-->
 
           <div v-if="stats && stats.length > 0" class="hero-stats">
             <div v-for="(s, i) in stats" :key="i">

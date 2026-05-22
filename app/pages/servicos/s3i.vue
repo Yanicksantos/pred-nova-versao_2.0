@@ -12,7 +12,7 @@
         { value: 24, suffix: '/7', label: 'Suporte técnico' },
         { value: 500, prefix: '+', label: 'Empresas atendidas' },
       ]"
-      imageUrl="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80"
+      imageUrl="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=900&q=80"
       imageAlt="Dashboard industrial em tempo real"
       floatingNum="99.9%"
       floatingLbl="UPTIME SLA"

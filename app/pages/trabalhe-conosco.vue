@@ -14,7 +14,7 @@
         { value: 3, label: 'Áreas de negócio' },
         { value: 23, label: 'Registros e marcas' },
       ]"
-      imageUrl="/servico/services1.webp"
+      imageUrl="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=900&q=80"
       imageAlt="Profissional técnico em ambiente industrial"
       floatingNum="PRED"
       floatingLbl="Talentos que constroem confiança"

@@ -2,14 +2,13 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-grid">
-        <!-- Brand -->
         <div class="footer-col">
-          <NuxtLink to="/servicos/engenharia-manutencao-e-confiabilidade" class="site-logo">
+          <NuxtLink to="/" class="site-logo">
             <span class="site-logo-mark">P</span>
             <span>PRED · ENGENHARIA</span>
           </NuxtLink>
           <p class="footer-tag">
-            Engenharia de manutenção industrial com método MCI® próprio. Transformando indústrias há mais de 15 anos.
+            Engenharia industrial com método MCI® próprio, serviços técnicos, tecnologia e automação para gestão de ativos desde 1993.
           </p>
           <div :style="{ display: 'flex', gap: '10px', marginTop: '24px' }">
             <a
@@ -20,7 +19,6 @@
           </div>
         </div>
 
-        <!-- Serviços -->
         <div class="footer-col">
           <h4>Serviços</h4>
           <NuxtLink to="/servicos/engenharia-manutencao-e-confiabilidade">Engenharia de Manutenção</NuxtLink>
@@ -29,16 +27,14 @@
           <NuxtLink to="/mci">Metodologia MCI®</NuxtLink>
         </div>
 
-        <!-- Empresa -->
         <div class="footer-col">
           <h4>Empresa</h4>
-          <a>Sobre Nós</a>
+          <NuxtLink to="/institucional">Sobre Nós</NuxtLink>
           <NuxtLink to="/trabalhe-conosco">Carreiras</NuxtLink>
-          <a>Contato</a>
+          <a href="#contact">Contato</a>
           <NuxtLink to="/blog">Blog</NuxtLink>
         </div>
 
-        <!-- Contato -->
         <div class="footer-col">
           <h4>Contato</h4>
           <a>(11) 3456-7890</a>

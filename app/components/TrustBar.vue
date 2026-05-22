@@ -5,10 +5,10 @@
         <div class="trust-lbl">CONFIANÇA DE +500 INDÚSTRIAS</div>
         <div class="trust-logos">
           <span class="trust-logo">VALE</span>
-          <span class="trust-logo">PETROBRAS</span>
+          <span class="trust-logo">REAL CAFÉ</span>
           <span class="trust-logo">GERDAU</span>
-          <span class="trust-logo">AMBEV</span>
-          <span class="trust-logo">CSN</span>
+          <span class="trust-logo">CERBRAS</span>
+          <span class="trust-logo">BIANCOGRES</span>
           <span class="trust-logo">SUZANO</span>
         </div>
       </div>

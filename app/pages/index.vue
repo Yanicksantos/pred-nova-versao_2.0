@@ -3,7 +3,7 @@
     <HeroSection
       code="PRED"
       eyebrow="Soluções industriais inteligentes desde 1993"
-      headlineHtml="Segurança, <span class='accent'>confiabilidade</span><br/>e produtividade para <span class='underline'>ativos industriais</span>"
+      headlineHtml="<span class='underline'>Segurança,<br><span class='accent'>confiabilidade</span> e produtividade para ativos industriais</span>"
       sub="A Pred Engenharia integra serviços técnicos, engenharia de manutenção, automação industrial e plataformas digitais para transformar inspeções, PCM e confiabilidade em resultado operacional mensurável."
       primaryCta="Solicitar Diagnostico"
       secondaryCta="Conhecer Soluções"
@@ -11,10 +11,10 @@
       secondaryHref="#servicos"
       :stats="[
         { value: 30, prefix: '+', label: 'Anos de experiência' },
-        { value: 500, prefix: '+', label: 'Projetos e indústrias' },
+        { value: 3, label: 'Áreas de negócio' },
         { value: 23, label: 'Registros e marcas' },
       ]"
-      imageUrl="/servico/services1.webp"
+      imageUrl="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=900&q=80"
       imageAlt="Técnico industrial realizando inspeção em campo"
       floatingNum="1993"
       floatingLbl="Base técnica e inovação"
@@ -202,7 +202,7 @@
               Projetos industriais falham quando campo, engenharia e gestão trabalham separados. A Pred conecta essas frentes com metodologia, dados e disciplina operacional.
             </p>
             <div class="home-proof-image">
-              <img src="/sobre_30anos.png" alt="Pred Engenharia 30 anos" />
+              <img src="/sobre_30anos.png" alt="Pred Engenharia 30 anos"  />
               <div>
                 <div class="h-display">30+</div>
                 <span class="mono">ANOS DE HISTORIA</span>
@@ -288,6 +288,7 @@ const services = [
     tag: 'Campo + gestão',
     icon: 'I',
     to: '/servicos/inspecoes',
+     featured: true,
   },
   {
     num: '03',
@@ -296,7 +297,8 @@ const services = [
     tag: 'Tecnologia',
     icon: 'S',
     to: '/servicos/s3i',
-    dark: true,
+    dark: false,
+     featured: true,
   },
 ]
 
@@ -410,7 +412,7 @@ const differentials = [
 }
 
 .home-method-panel {
-  background: linear-gradient(160deg, var(--ink-700), #0c1d36);
+  background: linear-gradient(160deg, var(--ink-700), #181e59);
   border: 1px solid var(--ink-line-strong);
   border-radius: 6px;
   padding: 42px;
@@ -486,7 +488,7 @@ const differentials = [
 .home-proof-image img {
   width: 100%;
   aspect-ratio: 16 / 10;
-  object-fit: contain;
+  object-fit: cover;
   padding: 28px;
 }
 

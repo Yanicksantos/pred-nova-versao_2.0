@@ -12,7 +12,7 @@
         { value: 35, prefix: '+', suffix: '%', label: 'Redução de custos' },
         { value: 50, prefix: '+', suffix: '%', label: 'Disponibilidade' },
       ]"
-      imageUrl="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=900&q=80"
+      imageUrl="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=900&q=80"
       imageAlt="Engenheiro analisando sistema industrial"
       floatingNum="MCI®"
       floatingLbl="Método Integrado"
@@ -61,7 +61,7 @@
           </div>
           <div class="reveal reveal-delay-2" :style="{ position: 'relative' }">
             <div :style="{ position: 'relative', aspectRatio: '4/3', borderRadius: '6px', overflow: 'hidden', border: '1px solid var(--paper-line-strong)' }">
-              <img src="https://images.unsplash.com/photo-1581094488379-6c9d9e26e0a4?w=900&q=80" alt="Engenheiro em planta industrial" :style="{ width: '100%', height: '100%', objectFit: 'cover' }" />
+              <img src="/engehiero-planta.png" alt="Engenheiro em planta industrial" :style="{ width: '100%', height: '100%', objectFit: 'cover' }" />
               <div :style="{ position: 'absolute', inset: '0', background: 'linear-gradient(135deg, rgba(10,22,40,0.3), transparent 50%)' }"></div>
               <div :style="{ position: 'absolute', top: '18px', left: '18px', fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#fff', letterSpacing: '0.16em', display: 'flex', alignItems: 'center', gap: '8px' }">
                 <span :style="{ width: '8px', height: '8px', background: 'var(--cyan)' }"></span>

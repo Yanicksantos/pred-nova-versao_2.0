@@ -12,7 +12,7 @@
         { value: 500, prefix: '+', suffix: '', label: 'Indústrias atendidas' },
         { value: 95, suffix: '%', unit: '+', label: 'Disponibilidade média' },
       ]"
-      imageUrl="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80"
+      imageUrl="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=900&q=80"
       imageAlt="Engenheiro de manutenção em campo"
       floatingNum="+35%"
       floatingLbl="Redução de custos"
