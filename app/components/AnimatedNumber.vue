@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<{
 })
 
 const el = ref<HTMLElement | null>(null)
-const current = ref(0)
+const current = ref(props.value)
 const started = ref(false)
 
 const display = computed(() => {
@@ -30,6 +30,17 @@ const display = computed(() => {
 onMounted(() => {
   const node = el.value
   if (!node) return
+
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight
+  const rect = node.getBoundingClientRect()
+
+  if (rect.top < viewportHeight && rect.bottom > 0) {
+    started.value = true
+    return
+  }
+
+  current.value = 0
+
   const io = new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting && !started.value) {

@@ -1,6 +1,6 @@
 <template>
   <div class="page-enter">
-    <PredHeroSection
+    <HeroSection
       code="MP-501"
       eyebrow="Engenharia de Manutenção · Serviço Principal"
       headlineHtml="Estratégia e <span class='accent'>Inteligência</span><br/>de <span class='underline'>Ativos Industriais</span>"
@@ -18,12 +18,12 @@
       floatingLbl="Redução de custos"
     />
 
-    <PredTrustBar />
+    <TrustBar />
 
     <!-- Serviços -->
     <section class="s">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="01"
           eyebrow="Portfólio de Serviços"
           title="Seis frentes integradas para <br/>uma <span style='color:var(--red)'>manutenção de classe mundial</span>"
@@ -87,12 +87,12 @@
       </div>
     </section>
 
-    <PredDividerPulse />
+    <DividerPulse />
 
     <!-- Resultados -->
     <section class="s dark">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="02"
           eyebrow="Resultados Comprovados"
           title="Números que <span style='color:var(--cyan)'>provam o método</span>"
@@ -110,7 +110,7 @@
             <div class="corner"></div>
             <div class="metric-icon">{{ m.icon }}</div>
             <div class="metric-num">
-              <PredAnimatedNumber :value="m.num" :suffix="m.suf" />
+              <AnimatedNumber :value="m.num" :suffix="m.suf" />
               <span v-if="m.unit" class="unit">{{ m.unit }}</span>
             </div>
             <div class="metric-lbl">{{ m.lbl }}</div>
@@ -123,7 +123,7 @@
     <!-- Vantagens Competitivas -->
     <section class="s paper2">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="03"
           eyebrow="Por que a Pred"
           title="Vantagens <span style='color:var(--red)'>competitivas</span>"
@@ -165,11 +165,11 @@
                 </p>
                 <div :style="{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', paddingTop: '24px', borderTop: '1px solid var(--ink-line-strong)' }">
                   <div>
-                    <div class="h-display" :style="{ fontSize: '36px', color: 'var(--cyan)' }"><PredAnimatedNumber :value="500" suffix="+" /></div>
+                    <div class="h-display" :style="{ fontSize: '36px', color: 'var(--cyan)' }"><AnimatedNumber :value="500" suffix="+" /></div>
                     <div class="mono" :style="{ fontSize: '10.5px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: '4px' }">Indústrias</div>
                   </div>
                   <div>
-                    <div class="h-display" :style="{ fontSize: '36px', color: 'var(--cyan)' }"><PredAnimatedNumber :value="85" suffix="%" /></div>
+                    <div class="h-display" :style="{ fontSize: '36px', color: 'var(--cyan)' }"><AnimatedNumber :value="85" suffix="%" /></div>
                     <div class="mono" :style="{ fontSize: '10.5px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: '4px' }">Equipes autônomas</div>
                   </div>
                 </div>
@@ -186,7 +186,7 @@
     <!-- Process Timeline -->
     <section class="s">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="04"
           eyebrow="Como Trabalhamos"
           title="Da auditoria à <br/><span style='color:var(--red)'>autonomia operacional</span>"
@@ -216,9 +216,9 @@
       </div>
     </section>
 
-    <PredTestimonialsSection :items="testimonials" />
+    <TestimonialsSection :items="testimonials" />
 
-    <PredContactSection
+    <ContactSection
       pitchTitleHtml="Vamos transformar sua <span style='color:var(--cyan)'>manutenção?</span>"
       pitchSub="Agende uma conversa estratégica com nossos especialistas. Em 45 minutos mapeamos o estágio de maturidade da sua operação e indicamos o próximo passo concreto."
       :bullets="[
@@ -233,7 +233,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'pred' })
 useReveal()
 
 useSeoMeta({

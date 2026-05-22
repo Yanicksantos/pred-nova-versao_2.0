@@ -1,6 +1,6 @@
 <template>
   <div class="page-enter">
-    <PredHeroSection
+    <HeroSection
       code="PRED"
       eyebrow="Soluções industriais inteligentes desde 1993"
       headlineHtml="Segurança, <span class='accent'>confiabilidade</span><br/>e produtividade para <span class='underline'>ativos industriais</span>"
@@ -20,12 +20,12 @@
       floatingLbl="Base técnica e inovação"
     />
 
-    <PredTrustBar />
+    <TrustBar />
 
     <!-- Servicos -->
     <section id="servicos" class="s">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="01"
           eyebrow="Soluções Integradas"
           title="Tudo que sua operação precisa para <br/><span style='color:var(--red)'>evoluir a manutenção</span>"
@@ -89,12 +89,12 @@
       </div>
     </section>
 
-    <PredDividerPulse />
+    <DividerPulse />
 
     <!-- Metodo -->
     <section class="s dark">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="02"
           eyebrow="Como a Pred Atua"
           title="Da inspeção em campo ao <span style='color:var(--cyan)'>plano de decisão</span>"
@@ -134,7 +134,7 @@
     <!-- Resultados -->
     <section class="s darker">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="03"
           eyebrow="Autoridade em Numeros"
           title="Resultados que ajudam a <span style='color:var(--cyan)'>comprar com segurança</span>"
@@ -149,7 +149,7 @@
             <div class="corner"></div>
             <div class="metric-icon">{{ m.icon }}</div>
             <div class="metric-num">
-              <PredAnimatedNumber :value="m.value" :prefix="m.prefix" :suffix="m.suffix" />
+              <AnimatedNumber :value="m.value" :prefix="m.prefix" :suffix="m.suffix" />
             </div>
             <div class="metric-lbl">{{ m.label }}</div>
             <p class="metric-cap">{{ m.caption }}</p>
@@ -161,7 +161,7 @@
     <!-- Historia -->
     <section class="s paper2">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="04"
           eyebrow="Inovação e Confiança"
           title="Três décadas de <span style='color:var(--red)'>evolução industrial</span>"
@@ -246,7 +246,7 @@
       </div>
     </section>
 
-    <PredContactSection
+    <ContactSection
       pitchTitleHtml="Vamos transformar sua <span style='color:var(--cyan)'>rotina industrial</span>"
       pitchSub="Conte o desafio da sua operação. A Pred responde com uma rota clara para diagnóstico, priorização e implementação."
       :bullets="[
@@ -261,7 +261,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'pred' })
 useReveal()
 
 useSeoMeta({

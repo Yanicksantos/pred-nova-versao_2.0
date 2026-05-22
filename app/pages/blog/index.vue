@@ -262,7 +262,7 @@
       </div>
     </section>
 
-    <PredContactSection
+    <ContactSection
       pitchTitleHtml="Quer ser nosso <span style='color:var(--cyan)'>convidado?</span>"
       pitchSub="Aceitamos contribuições de engenheiros, gestores industriais e pesquisadores em manutenção e confiabilidade. Conteúdo técnico, com revisão por pares e direito a co-assinatura."
       :bullets="[
@@ -277,7 +277,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'pred' })
 useReveal()
 
 useSeoMeta({

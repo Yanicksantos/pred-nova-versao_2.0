@@ -1,6 +1,6 @@
 <template>
   <div class="page-enter">
-    <PredHeroSection
+    <HeroSection
       code="MP-502"
       eyebrow="SIT · Serviços Técnicos Especializados"
       headlineHtml="Excelência operacional<br/>através da <span class='underline'>Metodologia MCI®</span>"
@@ -18,12 +18,12 @@
       floatingLbl="Precisão"
     />
 
-    <PredTrustBar />
+    <TrustBar />
 
     <!-- Inspeções Preditivas -->
     <section class="s">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="01"
           eyebrow="Inspeções Preditivas"
           title="Técnicas de inspeção <span style='color:var(--red)'>avançadas</span>"
@@ -115,25 +115,25 @@
           <div class="reveal reveal-delay-2" :style="{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }">
             <div class="metric">
               <div class="corner"></div>
-              <div class="metric-num"><PredAnimatedNumber :value="98" suffix="%" /></div>
+              <div class="metric-num"><AnimatedNumber :value="98" suffix="%" /></div>
               <div class="metric-lbl">Precisão na identificação</div>
               <p class="metric-cap">Taxa de acerto em diagnóstico vs. desmontagem</p>
             </div>
             <div class="metric" :style="{ borderColor: 'var(--red)' }">
               <div class="corner" :style="{ borderColor: 'var(--red)' }"></div>
-              <div class="metric-num"><PredAnimatedNumber :value="45" suffix="%" prefix="−" /></div>
+              <div class="metric-num"><AnimatedNumber :value="45" suffix="%" prefix="−" /></div>
               <div class="metric-lbl">Falhas evitadas</div>
               <p class="metric-cap">Detecção preditiva antes do estágio crítico</p>
             </div>
             <div class="metric">
               <div class="corner"></div>
-              <div class="metric-num"><PredAnimatedNumber :value="72" suffix="h" /></div>
+              <div class="metric-num"><AnimatedNumber :value="72" suffix="h" /></div>
               <div class="metric-lbl">Tempo médio de laudo</div>
               <p class="metric-cap">Da coleta em campo ao laudo entregue ao cliente</p>
             </div>
             <div class="metric" :style="{ borderColor: 'var(--cyan)' }">
               <div class="corner"></div>
-              <div class="metric-num"><PredAnimatedNumber :value="100" suffix="%" /></div>
+              <div class="metric-num"><AnimatedNumber :value="100" suffix="%" /></div>
               <div class="metric-lbl">Rastreabilidade</div>
               <p class="metric-cap">Toda inspeção vinculada a ativo, técnico e protocolo</p>
             </div>
@@ -142,12 +142,12 @@
       </div>
     </section>
 
-    <PredDividerPulse />
+    <DividerPulse />
 
     <!-- PCM -->
     <section class="s">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="03"
           eyebrow="PCM"
           title="Planejamento &amp; Controle <br/>de <span style='color:var(--red)'>Manutenção</span>"
@@ -191,7 +191,7 @@
           >
             <div v-for="(d, i) in dfItems" :key="i">
               <div class="h-display" :style="{ fontSize: '52px', color: d.clr, lineHeight: '1', marginBottom: '8px' }">
-                <PredAnimatedNumber :value="d.v" :suffix="d.suf" :prefix="d.pre || ''" />
+                <AnimatedNumber :value="d.v" :suffix="d.suf" :prefix="d.pre || ''" />
                 <span v-if="d.unit" :style="{ color: 'var(--cyan)' }">{{ d.unit }}</span>
               </div>
               <div class="mono" :style="{ fontSize: '11px', color: 'var(--ink-300)', letterSpacing: '0.14em', textTransform: 'uppercase' }">{{ d.lbl }}</div>
@@ -204,7 +204,7 @@
     <!-- Modelo de Negócio -->
     <section class="s dark">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="04"
           eyebrow="Modelo de Negócio Inovador"
           title="Contratação <span style='color:var(--cyan)'>modular</span> com foco em<br/>transferência de conhecimento"
@@ -251,11 +251,11 @@
                 </p>
                 <div :style="{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', paddingTop: '24px', borderTop: '1px solid var(--ink-line-strong)' }">
                   <div>
-                    <div class="h-display" :style="{ fontSize: '42px', color: 'var(--cyan)' }"><PredAnimatedNumber :value="100" suffix="+" /></div>
+                    <div class="h-display" :style="{ fontSize: '42px', color: 'var(--cyan)' }"><AnimatedNumber :value="100" suffix="+" /></div>
                     <div class="mono" :style="{ fontSize: '10.5px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: '4px' }">Profissionais capacitados</div>
                   </div>
                   <div>
-                    <div class="h-display" :style="{ fontSize: '42px', color: 'var(--cyan)' }"><PredAnimatedNumber :value="85" suffix="%" /></div>
+                    <div class="h-display" :style="{ fontSize: '42px', color: 'var(--cyan)' }"><AnimatedNumber :value="85" suffix="%" /></div>
                     <div class="mono" :style="{ fontSize: '10.5px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: '4px' }">Taxa de autonomia</div>
                   </div>
                 </div>
@@ -269,9 +269,9 @@
       </div>
     </section>
 
-    <PredTestimonialsSection :items="testimonials" />
+    <TestimonialsSection :items="testimonials" />
 
-    <PredContactSection
+    <ContactSection
       pitchTitleHtml="Comece pela <span style='color:var(--cyan)'>inspeção</span>"
       pitchSub="Uma campanha técnica em sua planta principal revela 2-3 anos de oportunidades acumuladas. Comece com um piloto auditável e expanda a partir de evidências."
       :bullets="[
@@ -286,7 +286,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'pred' })
 useReveal()
 
 useSeoMeta({

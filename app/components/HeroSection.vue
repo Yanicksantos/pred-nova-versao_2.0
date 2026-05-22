@@ -35,7 +35,7 @@
           <div v-if="stats && stats.length > 0" class="hero-stats">
             <div v-for="(s, i) in stats" :key="i">
               <div class="hero-stat-num">
-                <PredAnimatedNumber
+                <AnimatedNumber
                   :value="s.value"
                   :suffix="s.suffix || ''"
                   :prefix="s.prefix || ''"
@@ -49,7 +49,7 @@
         </div>
 
         <div class="hero-visual reveal in">
-          <img :src="imageUrl" :alt="imageAlt" />
+          <img :src="imageUrl" :alt="imageAlt" loading="eager" decoding="async" fetchpriority="high" />
           <div v-if="floatingNum" class="hero-floating">
             <div class="hero-floating-num">{{ floatingNum }}</div>
             <div class="hero-floating-lbl">{{ floatingLbl }}</div>

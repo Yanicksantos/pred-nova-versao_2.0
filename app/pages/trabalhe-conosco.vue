@@ -1,6 +1,6 @@
 <template>
   <div class="page-enter">
-    <PredHeroSection
+    <HeroSection
       code="CAREERS"
       eyebrow="Trabalhe Conosco"
       headlineHtml="Sua carreira pode manter a <span class='accent'>indústria</span><br/>em <span class='underline'>movimento</span>"
@@ -20,11 +20,11 @@
       floatingLbl="Talentos que constroem confiança"
     />
 
-    <PredTrustBar />
+    <TrustBar />
 
     <section id="areas" class="s">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="01"
           eyebrow="Onde você pode atuar"
           title="Talentos que unem <span style='color:var(--red)'>campo, método e tecnologia</span>"
@@ -49,7 +49,7 @@
       </div>
     </section>
 
-    <PredDividerPulse />
+    <DividerPulse />
 
     <section class="s paper2">
       <div class="wrap">
@@ -201,7 +201,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'pred' })
 useReveal()
 
 useSeoMeta({

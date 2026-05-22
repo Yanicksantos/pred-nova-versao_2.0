@@ -1,6 +1,6 @@
 <template>
   <div class="page-enter">
-    <PredHeroSection
+    <HeroSection
       code="MCI"
       eyebrow="Método Proprietário · Patenteado"
       headlineHtml="Obtenha todo o <span class='accent'>potencial</span><br/>da sua <span class='underline'>manutenção</span>"
@@ -18,7 +18,7 @@
       floatingLbl="Método Integrado"
     />
 
-    <PredTrustBar />
+    <TrustBar />
 
     <!-- Introdução ao Método -->
     <section class="s">
@@ -81,7 +81,7 @@
     <!-- Três Pilares -->
     <section class="s paper2">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="02"
           eyebrow="Os Três Pilares"
           title="Engenharia. PCM.<br/><span style='color:var(--red)'>Confiabilidade.</span>"
@@ -213,7 +213,7 @@
     <!-- Benefícios -->
     <section class="s dark">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="04"
           eyebrow="Benefícios Comprovados"
           title="Benefícios do <span style='color:var(--cyan)'>Método MCI®</span>"
@@ -226,7 +226,7 @@
           <div v-for="(b, i) in beneficios" :key="i" :class="`metric reveal reveal-delay-${i + 1}`">
             <div class="corner"></div>
             <div class="metric-num" :style="{ color: i === 3 ? 'var(--cyan)' : '#fff' }">
-              <PredAnimatedNumber :value="b.v" :prefix="b.pre" :suffix="b.suf" />
+              <AnimatedNumber :value="b.v" :prefix="b.pre" :suffix="b.suf" />
             </div>
             <div class="metric-lbl">{{ b.lbl }}</div>
             <p class="metric-cap">{{ b.cap }}</p>
@@ -248,9 +248,9 @@
       </div>
     </section>
 
-    <PredTestimonialsSection :items="testimonials" />
+    <TestimonialsSection :items="testimonials" />
 
-    <PredContactSection
+    <ContactSection
       pitchTitleHtml="Aplique o MCI® na sua <span style='color:var(--cyan)'>operação</span>"
       pitchSub="O Método MCI® é mais do que uma metodologia — é uma transformação cultural e técnica. Comece com nosso assessment proprietário e veja onde sua operação está hoje."
       :bullets="[
@@ -265,7 +265,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'pred' })
 useReveal()
 
 useSeoMeta({

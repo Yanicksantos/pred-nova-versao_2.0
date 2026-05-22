@@ -1,7 +1,7 @@
 <template>
   <section class="s paper2">
     <div class="wrap">
-      <PredSectionHead
+      <SectionHead
         num="05"
         eyebrow="Prova Social"
         title="Indústrias que transformaram sua manutenção"

@@ -16,21 +16,9 @@ const isLoading = ref(false)
 const error = ref<string | null>(null)
 
 let loadPromise: Promise<void> | null = null
+let scriptPromise: Promise<void> | null = null
 
 export function useVLibras(host?: Ref<HTMLElement | null>) {
-  if (import.meta.client) {
-    useHead({
-      script: [
-        {
-          key: 'pred-vlibras-plugin',
-          src: VLibrasScriptUrl,
-          defer: true,
-          tagPosition: 'bodyClose',
-        },
-      ],
-    })
-  }
-
   async function load() {
     if (import.meta.server) return
     if (isReady.value) return
@@ -39,7 +27,8 @@ export function useVLibras(host?: Ref<HTMLElement | null>) {
     isLoading.value = true
     error.value = null
 
-    loadPromise = waitForWidget()
+    loadPromise = loadVLibrasScript()
+      .then(() => waitForWidget())
       .then(async () => {
         const vlibrasWindow = window as VLibrasWindow
 
@@ -189,6 +178,46 @@ export function useVLibras(host?: Ref<HTMLElement | null>) {
       tick()
     })
   }
+}
+
+function loadVLibrasScript() {
+  const vlibrasWindow = window as VLibrasWindow
+
+  if (vlibrasWindow.VLibras?.Widget) {
+    return Promise.resolve()
+  }
+
+  if (scriptPromise) {
+    return scriptPromise
+  }
+
+  scriptPromise = new Promise<void>((resolve, reject) => {
+    const existingScript = document.querySelector<HTMLScriptElement>(`script[src="${VLibrasScriptUrl}"]`)
+
+    if (existingScript) {
+      resolve()
+      return
+    }
+
+    const script = document.createElement('script')
+    script.src = VLibrasScriptUrl
+    script.async = true
+    script.defer = true
+    script.dataset.predVlibras = 'true'
+
+    script.onload = () => {
+      resolve()
+    }
+
+    script.onerror = () => {
+      scriptPromise = null
+      reject(new Error('Nao foi possivel carregar o script do VLibras.'))
+    }
+
+    document.body.appendChild(script)
+  })
+
+  return scriptPromise
 }
 
 function runDeferredVLibrasOnload(previousOnload?: GlobalEventHandlers['onload']) {

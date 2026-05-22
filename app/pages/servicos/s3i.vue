@@ -1,6 +1,6 @@
 <template>
   <div class="page-enter">
-    <PredHeroSection
+    <HeroSection
       code="MP-503"
       eyebrow="SOF · Apps Técnicos em Nuvem"
       headlineHtml="<span class='accent'>S2i®</span> e <span class='accent'>Perigômetro®</span><br/>Apps técnicos para <span class='underline'>engenharia de manutenção</span>"
@@ -18,7 +18,7 @@
       floatingLbl="UPTIME SLA"
     />
 
-    <PredTrustBar />
+    <TrustBar />
 
     <!-- S2i -->
     <section class="s">
@@ -102,12 +102,12 @@
       </div>
     </section>
 
-    <PredDividerPulse />
+    <DividerPulse />
 
     <!-- Perigômetro -->
     <section class="s dark">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="02"
           eyebrow="App Perigômetro®"
           title="Gestão sistêmica <br/>de <span style='color:var(--cyan)'>manutenção</span>"
@@ -193,7 +193,7 @@
     <!-- Resultados -->
     <section class="s darker">
       <div class="wrap">
-        <PredSectionHead
+        <SectionHead
           num="03"
           eyebrow="Impacto Mensurável"
           title="Resultados <span style='color:var(--cyan)'>comprovados</span>"
@@ -207,7 +207,7 @@
             <div class="corner"></div>
             <div class="metric-icon">{{ m.icon }}</div>
             <div class="metric-num">
-              <PredAnimatedNumber :value="m.num" :prefix="m.pre" :suffix="m.suf" />
+              <AnimatedNumber :value="m.num" :prefix="m.pre" :suffix="m.suf" />
             </div>
             <div class="metric-lbl">{{ m.lbl }}</div>
             <p class="metric-cap">{{ m.cap }}</p>
@@ -238,9 +238,9 @@
       </div>
     </section>
 
-    <PredTestimonialsSection :items="testimonials" />
+    <TestimonialsSection :items="testimonials" />
 
-    <PredContactSection
+    <ContactSection
       pitchTitleHtml="Veja o S2i® rodando em <span style='color:var(--cyan)'>30 minutos</span>"
       pitchSub="Demo guiada com dados sintéticos do seu setor industrial. Você sai da reunião sabendo exatamente como os apps se conectam ao seu CMMS atual."
       :bullets="[
@@ -255,7 +255,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'pred' })
 useReveal()
 
 useSeoMeta({
