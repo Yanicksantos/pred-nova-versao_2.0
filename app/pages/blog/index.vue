@@ -15,12 +15,12 @@
               <span class="hero-eyebrow-dot"></span>
               INSIGHTS TÉCNICOS · PUBLICAÇÕES ESTRATÉGICAS
             </div>
-            <h1 class="h-display hero-headline" :style="{ fontSize: 'clamp(36px, 4.4vw, 64px)' }">
-              Inteligência <br/>aplicada à
-              <span class="underline">manutenção industrial</span>
+            <h1 class="h-display hero-headline " :style="{ fontSize: 'clamp(36px, 4.4vw, 64px)' }">
+            <span class="underline">Conteúdos técnicos para gestão da manutenção</span> 
+             
             </h1>
             <p class="hero-sub" :style="{ marginTop: '24px' }">
-              Artigos, análises e estudos de caso sobre confiabilidade, gestão de ativos e transformação digital — escritos por nossos engenheiros sêniores e revisados por pares.
+              Reflexões práticas sobre função manter, autoengano, cenário macroeconômico, inspeções, lubrificação e estratégias de manutenção para operações industriais mais confiáveis.
             </p>
           </div>
           <div class="reveal in reveal-delay-2" :style="{ display: 'flex', flexDirection: 'column', gap: '16px' }">
@@ -65,7 +65,7 @@
           </button>
         </div>
         <div :style="{ marginLeft: 'auto', flexShrink: '0', display: 'flex', gap: '14px', alignItems: 'center' }" class="blog-tools">
-          <span class="mono" :style="{ fontSize: '11px', color: 'var(--ink-300)', letterSpacing: '0.1em', textTransform: 'uppercase' }">187 ARTIGOS · ORDENADO POR DATA</span>
+          <span class="mono" :style="{ fontSize: '11px', color: 'var(--ink-300)', letterSpacing: '0.1em', textTransform: 'uppercase' }">12 ARTIGOS · ORDENADO POR DATA</span>
         </div>
       </div>
     </div>
@@ -124,9 +124,9 @@
           <div>
             <div :style="{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }" class="posts-grid">
               <article
-                v-for="(p, i) in posts"
-                :key="i"
-                :class="`reveal reveal-delay-${(i % 3) + 1}`"
+                v-for="(p, i) in paginatedPosts"
+                :key="p.title"
+                :class="`reveal in reveal-delay-${(i % 3) + 1}`"
                 :style="{
                   background: '#fff',
                   border: '1px solid var(--paper-line)',
@@ -160,9 +160,9 @@
 
             <!-- Pagination -->
             <div :style="{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '48px' }">
-              <button @click="page = Math.max(1, page - 1)" :style="{ width: '40px', height: '40px', borderRadius: '4px', border: '1px solid var(--paper-line-strong)', background: '#fff', cursor: 'pointer', fontFamily: 'var(--font-mono)' }">←</button>
+              <button @click="page = Math.max(1, page - 1)" :style="{ width: '40px', height: '40px', borderRadius: '4px', border: '1px solid var(--paper-line-strong)', background: '#fff', cursor: page === 1 ? 'not-allowed' : 'pointer', opacity: page === 1 ? 0.45 : 1, fontFamily: 'var(--font-mono)' }">←</button>
               <button
-                v-for="n in [1,2,3,4,5]"
+                v-for="n in pageNumbers"
                 :key="n"
                 @click="page = n"
                 :style="{
@@ -179,9 +179,7 @@
               >
                 {{ n }}
               </button>
-              <span class="mono" :style="{ padding: '0 8px', color: 'var(--ink-300)' }">...</span>
-              <button @click="page = 24" :style="{ width: '40px', height: '40px', borderRadius: '4px', border: '1px solid var(--paper-line)', background: 'transparent', cursor: 'pointer', fontFamily: 'var(--font-mono)', fontWeight: '600' }">24</button>
-              <button @click="page = page + 1" :style="{ width: '40px', height: '40px', borderRadius: '4px', border: '1px solid var(--paper-line-strong)', background: '#fff', cursor: 'pointer', fontFamily: 'var(--font-mono)' }">→</button>
+              <button @click="page = Math.min(totalPages, page + 1)" :style="{ width: '40px', height: '40px', borderRadius: '4px', border: '1px solid var(--paper-line-strong)', background: '#fff', cursor: page === totalPages ? 'not-allowed' : 'pointer', opacity: page === totalPages ? 0.45 : 1, fontFamily: 'var(--font-mono)' }">→</button>
             </div>
           </div>
 
@@ -280,44 +278,66 @@
 useReveal()
 
 useSeoMeta({
-  title: 'Pred Engenharia - Blog',
-  ogTitle: 'Pred Engenharia - Blog',
-  description: 'Artigos, análises e estudos de caso sobre confiabilidade, gestão de ativos e transformação digital — escritos por nossos engenheiros sêniores.',
+  title: 'Pred Engenharia - Blog Técnico de Manutenção Industrial',
+  ogTitle: 'Pred Engenharia - Blog Técnico de Manutenção Industrial',
+  description: 'Conteúdos sobre função manter, gestão do autoengano, cenário macroeconômico, inspeções, lubrificação e estratégias de manutenção industrial.',
   twitterCard: 'summary_large_image',
   ogUrl: 'https://www.predengenharia.com.br/blog',
 })
 
 const filter = ref('Todos')
 const page = ref(1)
+const postsPerPage = 6
 
-const categories = ['Todos', 'Manutenção Estratégica', 'Confiabilidade', 'Gestão de Ativos', 'Indicadores', 'Transformação Digital']
+const categories = ['Todos', 'Função Manter', 'Gestão da Manutenção', 'Cenário Global', 'Inspeções', 'Lubrificação']
 
 const featured = {
   img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1400&q=80',
   cat: 'EM DESTAQUE',
   title: 'As Cinco Dimensões da Função Manter',
-  sub: 'Descubra como a manutenção industrial evoluiu para além da simples correção de falhas, abrangendo estratégias preditivas, gestão de riscos e otimização de performance através da análise de dados em tempo real.',
-  date: '15 Jan 2026',
-  author: 'Osório Rezende C. Filho',
-  read: '8 min',
+  sub: 'A função “manter” é essencial para a continuidade e eficiência das operações industriais. O artigo organiza esse papel em dimensões que conectam rotina, confiabilidade, segurança e desempenho.',
+  date: '18 Dez 2024',
+  author: 'Ozório Rezende C. Filho',
+  read: '6 min',
   views: '1.2k',
 }
 
 // Fixed views to avoid hydration mismatch
 const posts = [
-  { cat: 'Manutenção Estratégica', title: 'Como Alinhar a Manutenção ao Cenário Macroeconômico Global', sub: 'Descubra estratégias essenciais para sincronizar sua operação com tendências econômicas globais e maximizar resultados.', date: '15 Jan 2026', read: '6 min', img: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=700&q=80', views: 847 },
-  { cat: 'Confiabilidade', title: 'As Cinco Dimensões da Função Manter na Indústria', sub: 'Entenda os pilares fundamentais que sustentam uma gestão de manutenção de classe mundial e como implementá-los.', date: '12 Jan 2026', read: '9 min', img: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=700&q=80', views: 623 },
-  { cat: 'Gestão de Ativos', title: 'Gestão do Autoengano na Manutenção Industrial', sub: 'Como identificar e eliminar vieses cognitivos que comprometem a tomada de decisão na gestão de ativos industriais.', date: '08 Jan 2026', read: '7 min', img: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=700&q=80', views: 512 },
-  { cat: 'Indicadores & KPIs', title: 'Indicadores Estratégicos para Manutenção 4.0', sub: 'Os KPIs essenciais que toda operação de manutenção moderna deve monitorar para garantir excelência operacional.', date: '05 Jan 2026', read: '5 min', img: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&q=80', views: 934 },
-  { cat: 'Transformação Digital', title: 'IoT e Preditiva: O Futuro da Manutenção Industrial', sub: 'Como tecnologias emergentes estão revolucionando a manutenção e criando vantagens competitivas sustentáveis.', date: '02 Jan 2026', read: '8 min', img: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=700&q=80', views: 718 },
-  { cat: 'Manutenção Estratégica', title: 'ROI em Manutenção: Como Medir e Maximizar Resultados', sub: 'Metodologias comprovadas para calcular o retorno sobre investimento em projetos de manutenção e confiabilidade.', date: '28 Dez 2025', read: '6 min', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=700&q=80', views: 456 },
+  { cat: 'Função Manter', title: 'As Cinco Dimensões da Função Manter', sub: 'Por Ozório Rezende C. Filho, uma leitura sobre como a função “manter” sustenta continuidade, eficiência e integridade nas operações industriais.', date: '18 Dez 2024', read: '6 min', img: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=700&q=80', views: 1240 },
+  { cat: 'Gestão da Manutenção', title: 'Manutenção de Transportadores de Correia: Técnicas Essenciais para Eficiência e Durabilidade', sub: 'Cuidados técnicos para manter transportadores de correia mais confiáveis, duráveis e eficientes dentro das rotinas industriais.', date: '09 Jul 2024', read: '9 min', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=700&q=80', views: 1187 },
+  { cat: 'Inspeções', title: 'Inspeções Qualitativas e Quantitativas: Como Diferenciá-las?', sub: 'A classificação das técnicas de inspeção por característica predominante ajuda a definir limites, critérios e planos mais consistentes.', date: '18 Ago 2022', read: '8 min', img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=700&q=80', views: 846 },
+  { cat: 'Lubrificação', title: 'Por que a Graxa à Base de Lítio é a Mais Usada?', sub: 'Segundo o relatório mundial do NLGI, graxas à base de lítio ou complexo de lítio representam grande parte da produção mundial pela versatilidade.', date: '15 Jul 2022', read: '6 min', img: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=700&q=80', views: 792 },
+  { cat: 'Inspeções', title: 'Inspetor Planejador: Esta Multifunção Dá Certo?', sub: 'Uma reflexão sobre papéis, responsabilidades e limites entre inspeção, planejamento e execução dentro da rotina de manutenção.', date: '29 Jun 2022', read: '6 min', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&q=80', views: 651 },
+  { cat: 'Gestão da Manutenção', title: 'Falha Funcional ou Distúrbio Operacional: Como Diferenciá-los?', sub: 'Nem todo evento de parada ou perda de ritmo apontado para a manutenção é falha funcional; a classificação correta muda a análise e a ação.', date: '15 Jun 2022', read: '8 min', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80', views: 721 },
+  { cat: 'Gestão da Manutenção', title: 'A Manutenção Preventiva Cronológica é a Melhor Estratégia?', sub: 'Quando, como e onde aplicar manutenção preventiva cronológica ao revisar estratégias e planos de manutenção de equipamentos e processos.', date: '17 Mai 2022', read: '9 min', img: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=700&q=80', views: 803 },
+  { cat: 'Gestão da Manutenção', title: 'Cuidado com a Gestão do Autoengano na Manutenção', sub: 'A falsa sensação de controle pode esconder falhas, reduzir visibilidade sobre ativos e comprometer decisões críticas de manutenção.', date: '12 Dez 2024', read: '7 min', img: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=700&q=80', views: 1098 },
+  { cat: 'Cenário Global', title: 'Como Alinhar a Sua Manutenção ao Cenário Macroeconômico Global – Parte 3 de 3', sub: 'Os colaboradores das gerências de manutenção precisam ser preparados antecipadamente para responder a cenários instáveis e exigentes.', date: '04 Dez 2024', read: '6 min', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80', views: 934 },
+  { cat: 'Cenário Global', title: 'Como Alinhar a Sua Manutenção ao Cenário Macroeconômico Global – Parte 2 de 3', sub: 'Sensorização e IA só geram valor quando dados mestres, planos e estratégias estão estruturados e integrados aos sistemas de manutenção.', date: '28 Nov 2024', read: '7 min', img: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=700&q=80', views: 887 },
+  { cat: 'Cenário Global', title: 'Como Alinhar a Sua Manutenção ao Cenário Macroeconômico Global', sub: 'A manutenção baseada no tempo precisa ceder espaço para estratégias por condição e oportunidade, alinhadas ao novo contexto industrial.', date: '21 Nov 2024', read: '7 min', img: 'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=700&q=80', views: 1012 },
+  { cat: 'Cenário Global', title: 'Sua Manutenção Está Alinhada ao Cenário Macroeconômico Global?', sub: 'Uma introdução aos pontos de atenção para virar o jogo da manutenção em ambientes de incerteza, pressão por custo e mudanças bruscas.', date: '07 Nov 2024', read: '8 min', img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=80', views: 964 },
+  
 ]
 
+const totalPages = computed(() => Math.max(1, Math.ceil(posts.length / postsPerPage)))
+const pageNumbers = computed(() => Array.from({ length: totalPages.value }, (_, index) => index + 1))
+
+const paginatedPosts = computed(() => {
+  const start = (page.value - 1) * postsPerPage
+  return posts.slice(start, start + postsPerPage)
+})
+
+watchEffect(() => {
+  if (page.value > totalPages.value) {
+    page.value = totalPages.value
+  }
+})
+
 const mostRead = [
-  'RCM aplicado a frotas industriais',
-  'OEE, MTBF e MTTR sem confusão',
-  'Lubrificação preditiva — o ABC',
-  'Como apresentar manutenção pro CFO',
+  'As Cinco Dimensões da Função Manter',
+  'Cuidado com a Gestão do Autoengano na Manutenção',
+  'Como Alinhar a Sua Manutenção ao Cenário Macroeconômico Global',
+  'Inspeções Qualitativas e Quantitativas',
 ]
 </script>
 
