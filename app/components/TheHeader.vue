@@ -64,6 +64,39 @@
         <a href="#contact" class="btn btn-primary btn-sm">
           Falar com Especialista <span class="arrow">→</span>
         </a>
+        <div
+          class="portal-dropdown"
+          :class="{ open: portalOpen }"
+          @mouseenter="portalOpen = true"
+          @mouseleave="portalOpen = false"
+          @focusout="closePortalOnFocusout"
+        >
+          <button
+            type="button"
+            class="portal-trigger"
+            aria-label="Acessos internos"
+            aria-haspopup="true"
+            :aria-expanded="portalOpen"
+            @click="portalOpen = !portalOpen"
+          >
+            <span class="portal-user-icon" aria-hidden="true"></span>
+          </button>
+
+          <div v-show="portalOpen" class="portal-menu">
+            <a
+              v-for="item in PORTAL_NAV"
+              :key="item.href"
+              :href="item.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="portal-menu-item"
+            >
+              <span>{{ item.label }}</span>
+              <span :class="`portal-item-icon ${item.icon}`" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+
         <button
           class="hamburger"
           :class="{ open: mobileMenuOpen }"
@@ -120,6 +153,21 @@
         >
           Falar com Especialista <span class="arrow">→</span>
         </a>
+
+        <div class="mobile-nav-group mobile-portal-group">
+          <div class="mobile-nav-label">Acessos</div>
+          <a
+            v-for="item in PORTAL_NAV"
+            :key="item.href"
+            :href="item.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-nav-subitem"
+            @click="mobileMenuOpen = false"
+          >
+            <span>{{ item.label }}</span>
+          </a>
+        </div>
       </nav>
     </div>
   </header>
@@ -129,6 +177,7 @@
 const route = useRoute()
 const mobileMenuOpen = ref(false)
 const servicesOpen = ref(false)
+const portalOpen = ref(false)
 
 const PRIMARY_NAV = [
   { label: 'Institucional', to: '/institucional' },
@@ -158,6 +207,11 @@ const SECONDARY_NAV = [
   { label: 'Carreiras', to: '/trabalhe-conosco' },
 ]
 
+const PORTAL_NAV = [
+  { label: 'Intranet', href: 'http://www.pred.com.br/sgv/login/index.asp', icon: 'intranet' },
+  { label: 'Sala Vip', href: 'http://www.pred.com.br/salavip/manutencao/default.asp', icon: 'vip' },
+]
+
 const isServicesActive = computed(() => SERVICE_NAV.some((item) => isActive(item.to)))
 
 function isActive(to: string) {
@@ -173,9 +227,19 @@ function closeServicesOnFocusout(event: FocusEvent) {
   }
 }
 
+function closePortalOnFocusout(event: FocusEvent) {
+  const currentTarget = event.currentTarget as HTMLElement
+  const nextTarget = event.relatedTarget as Node | null
+
+  if (!nextTarget || !currentTarget.contains(nextTarget)) {
+    portalOpen.value = false
+  }
+}
+
 watch(() => route.path, () => {
   mobileMenuOpen.value = false
   servicesOpen.value = false
+  portalOpen.value = false
 })
 </script>
 
@@ -359,6 +423,160 @@ watch(() => route.path, () => {
   margin-left: 18px;
 }
 
+.portal-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.portal-trigger {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.portal-trigger:hover,
+.portal-dropdown.open .portal-trigger {
+  background: rgba(10,22,40,0.045);
+}
+
+.portal-user-icon {
+  position: relative;
+  width: 23px;
+  height: 24px;
+  display: block;
+}
+
+.portal-user-icon::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--ink-800);
+  transform: translateX(-50%);
+}
+
+.portal-user-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  border-radius: 10px 10px 2px 2px;
+  background: var(--ink-800);
+}
+
+.portal-menu {
+  position: absolute;
+  top: calc(100% + 13px);
+  right: 0;
+  width: 164px;
+  padding: 10px;
+  background: rgba(255,255,255,0.98);
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  box-shadow: 0 20px 52px rgba(10,22,40,0.18);
+  z-index: 145;
+}
+
+.portal-menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 14px;
+}
+
+.portal-menu-item {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 4px;
+  background: var(--paper-2);
+  color: var(--ink-700);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.portal-menu-item + .portal-menu-item {
+  margin-top: 8px;
+}
+
+.portal-menu-item:hover {
+  background: rgba(10,22,40,0.09);
+  color: var(--ink-800);
+}
+
+.portal-item-icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: var(--ink-300);
+}
+
+.portal-item-icon.intranet::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 8px;
+  height: 8px;
+  border: 1.8px solid currentColor;
+  border-radius: 50%;
+}
+
+.portal-item-icon.intranet::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  bottom: 1px;
+  height: 8px;
+  border: 1.8px solid currentColor;
+  border-radius: 8px 8px 3px 3px;
+}
+
+.portal-item-icon.vip::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+  border: 1.8px solid currentColor;
+  border-radius: 50%;
+}
+
+.portal-item-icon.vip::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  width: 9px;
+  height: 9px;
+  border: 1.8px solid currentColor;
+  border-radius: 50%;
+  box-shadow: -4px -4px 0 -3px currentColor;
+}
+
 .lang-pills {
   color: var(--ink-300);
 }
@@ -468,6 +686,15 @@ watch(() => route.path, () => {
   justify-content: center;
   margin-top: auto;
   min-height: 50px;
+}
+
+.mobile-portal-group {
+  padding-top: 18px;
+  margin-top: 18px;
+}
+
+.mobile-portal-group .mobile-nav-subitem {
+  display: block;
 }
 
 @media (max-width: 1260px) {
