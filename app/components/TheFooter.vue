@@ -36,19 +36,19 @@
 
         <div class="footer-col">
           <h4>Contato</h4>
-          <a>(11) 3456-7890</a>
+          <a>+55 27 3337-5977</a>
           <a>contato@pred.com.br</a>
-          <a>Av. Industrial, 1000</a>
-          <a>São Paulo · SP · Brasil</a>
+          <a>R. Italina Pereira Mota, 440</a>
+          <a>Vitória · ES · Brasil</a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>© 2026 PRED ENGENHARIA · CNPJ 00.000.000/0001-00</div>
+        <div>© 2026 PRED ENGENHARIA · CNPJ 39.642.624/0001-48</div>
         <div :style="{ display: 'flex', gap: '24px' }">
-          <a>Política de Privacidade</a>
-          <a>Termos de Uso</a>
-          <a>LGPD</a>
+          <NuxtLink to="/privacidade">Política de Privacidade</NuxtLink>
+          <NuxtLink to="/privacidade#cookies">Política de Cookies</NuxtLink>
+          <NuxtLink to="/privacidade#direitos">LGPD</NuxtLink>
         </div>
       </div>
     </div>

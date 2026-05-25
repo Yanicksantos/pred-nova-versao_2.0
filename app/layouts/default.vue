@@ -7,6 +7,7 @@
     <TheFooter />
     <ClientOnly>
       <AccessibilityTools />
+      <CookieConsent />
     </ClientOnly>
   </div>
 </template>
