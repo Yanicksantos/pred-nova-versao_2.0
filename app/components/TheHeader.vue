@@ -31,7 +31,6 @@
             @click="servicesOpen = !servicesOpen"
           >
             Serviços
-            <span class="nav-chevron" aria-hidden="true">⌄</span>
           </button>
 
           <div v-show="servicesOpen" class="nav-dropdown-menu">
@@ -182,10 +181,10 @@ watch(() => route.path, () => {
 
 <style scoped>
 .site-header {
-  background:
-    linear-gradient(180deg, rgba(10, 22, 40, 0.98), rgba(10, 22, 40, 0.92));
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  color: #fff;
+  background: rgba(255,255,255,0.96);
+  border-bottom: 1px solid var(--paper-line);
+  color: var(--ink-800);
+  box-shadow: 0 10px 30px -28px rgba(10,22,40,0.45);
 }
 
 .header-wrap {
@@ -211,7 +210,7 @@ watch(() => route.path, () => {
   max-height: 42px;
   object-fit: contain;
   object-position: left center;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+  filter: drop-shadow(0 8px 18px rgba(10,22,40,0.12));
 }
 
 .site-nav {
@@ -233,7 +232,7 @@ watch(() => route.path, () => {
   min-height: 38px;
   display: inline-flex;
   align-items: center;
-  color: rgba(255,255,255,0.76);
+  color: var(--ink-500);
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
@@ -248,7 +247,7 @@ watch(() => route.path, () => {
 .nav-dropdown-trigger:hover,
 .nav-dropdown-trigger.active,
 .nav-dropdown.open .nav-dropdown-trigger {
-  color: #fff;
+  color: var(--ink-800);
 }
 
 .site-nav a.active::after,
@@ -259,7 +258,7 @@ watch(() => route.path, () => {
   right: 0;
   bottom: 3px;
   height: 2px;
-  background: linear-gradient(90deg, var(--red), var(--cyan));
+  background: var(--red);
 }
 
 .nav-dropdown {
@@ -281,7 +280,7 @@ watch(() => route.path, () => {
 .nav-chevron {
   font-size: 13px;
   line-height: 1;
-  color: var(--cyan);
+  color: var(--red);
   transform: translateY(-1px);
   transition: transform 0.18s ease;
 }
@@ -296,11 +295,11 @@ watch(() => route.path, () => {
   left: 50%;
   width: min(340px, calc(100vw - 32px));
   transform: translateX(-50%);
-  background: rgba(10, 22, 40, 0.98);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.98);
+  border: 1px solid var(--paper-line);
   border-radius: 6px;
   padding: 8px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.34);
+  box-shadow: 0 24px 60px rgba(10,22,40,0.14);
   z-index: 140;
 }
 
@@ -318,15 +317,15 @@ watch(() => route.path, () => {
   min-height: 0;
   padding: 13px 14px;
   border-radius: 4px;
-  color: rgba(255,255,255,0.78);
+  color: var(--ink-500);
   text-decoration: none;
   transition: background 0.18s ease, color 0.18s ease;
 }
 
 .nav-dropdown-menu a:hover,
 .nav-dropdown-menu a.active {
-  background: rgba(255,255,255,0.07);
-  color: #fff;
+  background: rgba(10,22,40,0.045);
+  color: var(--ink-800);
 }
 
 .nav-dropdown-menu a.active::after {
@@ -342,7 +341,7 @@ watch(() => route.path, () => {
 .nav-dropdown-copy {
   display: block;
   margin-top: 5px;
-  color: rgba(255,255,255,0.52);
+  color: var(--ink-300);
   font-size: 12px;
   line-height: 1.45;
 }
@@ -361,11 +360,11 @@ watch(() => route.path, () => {
 }
 
 .lang-pills {
-  color: rgba(255,255,255,0.48);
+  color: var(--ink-300);
 }
 
 .lang-pills span:first-child {
-  color: #fff;
+  color: var(--ink-800);
 }
 
 .hamburger {
@@ -383,7 +382,7 @@ watch(() => route.path, () => {
 .hamburger span {
   display: block;
   height: 2px;
-  background: #fff;
+  background: var(--ink-800);
   border-radius: 2px;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -395,7 +394,7 @@ watch(() => route.path, () => {
 .mobile-overlay {
   position: fixed;
   inset: var(--header-h) 0 0 0;
-  background: rgba(6, 15, 28, 0.82);
+  background: rgba(10, 22, 40, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 99;
@@ -409,20 +408,19 @@ watch(() => route.path, () => {
   min-height: min(90vh, calc(100dvh - var(--header-h)));
   max-height: calc(100dvh - var(--header-h));
   overflow-y: auto;
-  background:
-    linear-gradient(180deg, var(--ink-800), var(--ink-900));
-  border-left: 1px solid rgba(255,255,255,0.08);
+  background: #fff;
+  border-left: 1px solid var(--paper-line);
   padding: 26px 28px 32px;
   display: flex;
   flex-direction: column;
-  box-shadow: -24px 0 60px rgba(0,0,0,0.28);
+  box-shadow: -24px 0 60px rgba(10,22,40,0.16);
 }
 
 .mobile-nav a {
   display: block;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.86);
+  border-bottom: 1px solid var(--paper-line);
+  color: var(--ink-700);
   font-size: 18px;
   font-weight: 500;
   text-decoration: none;
@@ -431,17 +429,17 @@ watch(() => route.path, () => {
 
 .mobile-nav a:hover,
 .mobile-nav a.active {
-  color: var(--cyan-bright);
+  color: var(--red);
 }
 
 .mobile-nav-group {
   padding: 22px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid var(--paper-line);
 }
 
 .mobile-nav-label {
   margin-bottom: 10px;
-  color: var(--cyan);
+  color: var(--red);
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -449,18 +447,18 @@ watch(() => route.path, () => {
 }
 
 .mobile-nav a.mobile-nav-subitem {
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--paper-line);
   border-radius: 6px;
   padding: 15px 16px;
   margin-top: 10px;
-  background: rgba(255,255,255,0.035);
+  background: var(--paper);
   font-size: 15px;
 }
 
 .mobile-nav-subitem small {
   display: block;
   margin-top: 5px;
-  color: rgba(255,255,255,0.52);
+  color: var(--ink-300);
   font-size: 12px;
   line-height: 1.4;
 }

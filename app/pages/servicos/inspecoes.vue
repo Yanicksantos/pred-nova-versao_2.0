@@ -3,7 +3,7 @@
     <HeroSection
       code="MP-502"
       eyebrow="SIT · Serviços Técnicos Especializados"
-      headlineHtml="Excelência operacional<br/>através da <span class='underline'>Metodologia MCI®</span>"
+      headlineHtml="<span class='underline'>Excelência <br/>operacional através da <br/> <span class='accent'>Metodologia MCI®</span></span>"
       sub="Transforme sua operação com nossos serviços técnicos de inspeção e manutenção. Baseados na metodologia MCI® para máxima confiabilidade e disponibilidade física."
       primaryCta="Solicitar Consultoria"
       secondaryCta="Ver Metodologia"

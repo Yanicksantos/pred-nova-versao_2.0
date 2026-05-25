@@ -3,7 +3,7 @@
     <HeroSection
       code="MP-501"
       eyebrow="Engenharia de Manutenção · Serviço Principal"
-      headlineHtml="Estratégia e <span class='accent'>Inteligência</span><br/>de <span class='underline'>Ativos Industriais</span>"
+      headlineHtml="<span class='underline'>Estratégia e <br/><span class='accent'>Inteligência</span>de Ativos Industriais</span>"
       sub="Transforme sua operação através de metodologias avançadas de manutenção e confiabilidade, com foco em gestão inteligente de ativos e maximização da disponibilidade operacional."
       primaryCta="Solicitar Diagnóstico Gratuito"
       secondaryCta="Ver Como Funciona na Prática"

@@ -27,7 +27,7 @@
             <div :style="{ position: 'relative' }">
               <input
                 placeholder="Buscar artigos por tema, técnica ou setor..."
-                :style="{ width: '100%', padding: '16px 50px 16px 18px', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.16)', background: 'rgba(255,255,255,0.06)', color: '#fff', fontFamily: 'var(--font-body)', fontSize: '14px' }"
+                :style="{ width: '100%', padding: '16px 50px 16px 18px', borderRadius: '6px', border: '1px solid rgba(0,0,0,0.16)', background: 'rgba(255,255,255,0.06)', color: '#fff', fontFamily: 'var(--font-body)', fontSize: '14px' }"
               />
               <div :style="{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--cyan)', fontSize: '18px' }">⌕</div>
             </div>

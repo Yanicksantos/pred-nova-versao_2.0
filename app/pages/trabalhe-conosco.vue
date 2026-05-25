@@ -3,7 +3,7 @@
     <HeroSection
       code="CAREERS"
       eyebrow="Trabalhe Conosco"
-      headlineHtml="Sua carreira pode manter a <span class='accent'>indústria</span><br/>em <span class='underline'>movimento</span>"
+      headlineHtml="<span class='underline'>Sua carreira pode manter a <span class='accent'>indústria</span><br/>em movimento</span>"
       sub="A Pred Engenharia conecta serviços técnicos, engenharia de manutenção, confiabilidade, tecnologia e automação para resolver desafios reais de segurança, disponibilidade e produtividade em ambientes industriais."
       primaryCta="Enviar Currículo"
       secondaryCta="Conhecer Áreas"

@@ -3,7 +3,7 @@
     <HeroSection
       code="MP-503"
       eyebrow="SOF · Apps Técnicos em Nuvem"
-      headlineHtml="<span class='accent'>S2i®</span> e <span class='accent'>Perigômetro®</span><br/>Apps técnicos para <span class='underline'>engenharia de manutenção</span>"
+      headlineHtml="<span class='underline'><span class='accent'>S2i®</span> e <span class='accent'>Perigômetro®</span><br/>Apps técnicos para engenharia de manutenção</span>"
       sub="Soluções SaaS homologadas em nuvem para otimizar processos industriais e aumentar a confiabilidade dos ativos. Tecnologia de ponta para gestão inteligente da manutenção."
       primaryCta="Solicitar Demonstração"
       secondaryCta="Ver Apps em Funcionamento"
